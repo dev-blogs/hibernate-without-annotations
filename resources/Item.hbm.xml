@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="model.Item" table="items">
+		<id column="id" name="id" type="java.lang.Long">
+			<generator class="increment" />
+		</id>
+		<property column="name" name="name" type="java.lang.String" />
+
+		<set name="providers" table="items_providers" lazy="false">
+			<key column="item_id" />
+			<many-to-many column="provider_id" class="model.Provider" />
+		</set>
+
+	</class>
+</hibernate-mapping>
